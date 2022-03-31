@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Danet Triviño" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Montserrat:ital,wght@0,200;0,300;1,400&display=swap" rel="stylesheet">
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Evaluadión diagnóstico</title>
+    </head>
+    <body>
+        <div id="uno"><strong><a href="index.html">PORTADA</a></strong></div>
+        <div id="otro"><a href="page_1.html">01</a> / <a href="page_2.html">02</a> / <a href="page_3.html">03</a></div>
+
+        <h1>PRUEBA DE DIAGNÓSTICO<h1>
+
+        <p>Los ejemplos que yo decidí usar fueron los que más me llamaron la atención, <p>
+        <p>   probablemente por ser interactivos con el mouse y por que hay físicas curiosas involucradas. <p>
+        <p>   Perdí mucho tiempo con otros ejemplos que me interesaron más, pero resultaron ser demasiado complejos. <p>
+        <p>   En la mayoría sólo se me ocurre cambiar un par de cosas nada más.<p>
+
+       <h2> Algunas intervenciones fueron muy tristes <h2>
+
+        <script>
+            function setup() {
+                createCanvas(windowWidth - 50, windowHeight - 50)
+                    .position(25, 30)
+                    .style("z-index", -1);
+                    btn = createButton('Descargar');
+                    btn.position(1300,800);
+                    btn.mousePressed(Descargando);
+                    fill(random(0,255));
+            }
+
+             function Descargando() {
+                  saveCanvas("imagen", "jpg");
+            }
+
+            function draw() {
+                background(225);
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+
+            function mouseDragged() {
+                  fill(random(0,255),random(0,255),random(0,255));
+                  triangle(mouseX,mouseY,mouseX+20,mouseY+20, mouseX-20,mouseY+20);
+            } 
+
+            function draw() {
+                  background(0,0,0);
+                  textSize (50);
+                  text("🐥", mouseX,mouseY);
+                  fill(50);
+                  ellipse(mouseX+35,mouseY+30,40,10)
+            }
+
+
+        </script>
+    </body>
+</html>

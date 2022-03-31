@@ -1,0 +1,90 @@
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Danet Triviño" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Ejercicio 1, "CADENA"</title>
+    </head>
+    <body>
+        <div id="uno"><a href="index.html">Página 1</a></div>
+        <div id="otro">
+            <strong><a href="page_1.html">01</a></strong> / <a href="page_2.html">02</a> / <a href="page_3.html">03</a>
+
+            <h1> Ahora tienen otras físicas. <h1>
+        </div>
+        <script>
+
+            let s1, s2;
+            let gravity = 5.0;
+            let mass = 7.0;
+
+
+            function setup() {
+                createCanvas(windowWidth - 50, windowHeight - 50);
+                fill(239, 154, 154, 80);
+                // Inputs: x, y, mass, gravity
+                s1 = new Spring2D(0.0, width / 2, mass, gravity);
+                s2 = new Spring2D(0.0, width / 2, mass, gravity);
+                btn = createButton('Descargar');
+                btn.position(1300,800);
+                btn.mousePressed(Descargando);
+            }
+
+            function Descargando() {
+                 saveCanvas("imagen", "jpg");
+               }
+
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+
+            function draw() {
+                background(0);
+                s1.update(mouseX, mouseY);
+                s1.display(mouseX, mouseY);
+                s2.update(s1.x, s1.y);
+                s2.display(s1.x, s1.y);
+            }
+
+            function Spring2D(xpos, ypos, m, g) {
+                this.x = xpos; // The x- and y-coordinates
+                this.y = ypos;
+                this.vx = 0; // The x- and y-axis velocities
+                this.vy = 0;
+                this.mass = m;
+                this.gravity = g;
+                this.radius = 50;
+                this.stiffness = 0.8;
+                this.damping = 0.8;
+
+                this.update = function (targetX, targetY) {
+                    let forceX = (targetX - this.x) * this.stiffness;
+                    let ax = forceX / this.mass;
+                    this.vx = this.damping * (this.vx + ax);
+                    this.x += this.vx;
+                    let forceY = (targetY - this.y) * this.stiffness;
+                    forceY += this.gravity;
+                    let ay = forceY / this.mass;
+                    this.vy = this.damping * (this.vy + ay);
+                    this.y += this.vy;
+                };
+
+                this.display = function (nx, ny) {
+                    noStroke();
+                    ellipse(this.x, this.y, this.radius * 4, this.radius * 4, );
+                    stroke(255);
+                    line(this.x, this.y, nx, ny);
+                };
+            }
+        </script>
+    </body>
+</html>
